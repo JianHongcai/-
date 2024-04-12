@@ -1,0 +1,11 @@
+spring:
+  application:
+    name: user-senter-back
+  # DataSource Config
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/junglesouljah
+    username: root
+    password: 757687424
+server:
+  port: 8080
