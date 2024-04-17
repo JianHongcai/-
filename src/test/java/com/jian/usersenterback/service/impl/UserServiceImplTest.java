@@ -6,6 +6,7 @@ import com.jian.usersenterback.service.UserService;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.util.DigestUtils;
 
 import javax.annotation.Resource;
 
@@ -17,11 +18,14 @@ class UserServiceImplTest {
 
     @Test
      void testAddUser(){
+        final String Add = "junglesouljah";
+        String newPassword = DigestUtils.md5DigestAsHex((Add + "123456789").getBytes());
         User user = new User();
+        user.setUserAccount("hong");
         user.setPhone("13595689644");
+        user.setUserPassword(newPassword);
         user.setGender(0);
         user.setUserStatus(0);
-        user.getIsDelete();
         boolean save = userService.save(user);
         System.out.println(user.getId());
         Assertions.assertTrue(save);
@@ -32,7 +36,7 @@ class UserServiceImplTest {
     @Test
     void userRegister() {
         String userAccount = "jian";
-        String userPassword = "";
+        String userPassword = "123456789";
         String checkPassword = "123456789";
         long result = userService.userRegister(userAccount, userPassword, checkPassword);
         Assertions.assertEquals(-1,result);
@@ -48,6 +52,15 @@ class UserServiceImplTest {
         userAccount = "ji a";
         result = userService.userRegister(userAccount, userPassword, checkPassword);
         Assertions.assertEquals(-1,result);
+
+    }
+
+    @Test
+    void userLogin() {
+        String userAccount = "jian";
+        String userPassword = "123456789";
+
+
 
     }
 }

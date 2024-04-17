@@ -5,7 +5,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-@MapperScan("com.jian.usersenterback.mapper")
+@MapperScan("com.jian.**.mapper")
 public class UserSenterBackApplication {
 
     public static void main(String[] args) {
